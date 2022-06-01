@@ -1,0 +1,20 @@
+<div class="container">
+  <h3><%= @restaurant.name %></h3>
+  <%= simple_form_for (@restaurant) do |f| %>
+    <%= f.input :name, disabled: true %>
+    <%= f.input :address, disabled: true %>
+    <%= f.input :phone_number, disabled: true %>
+    <%= f.input :category, disabled: true %>
+  <% end %>
+
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-primary"%>
+  <%= link_to 'Back', restaurants_path, class: "btn btn-primary" %>
+  <%= link_to 'Leave a review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+
+  <ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+  <% end %>
+</ul>
+
+</div>
